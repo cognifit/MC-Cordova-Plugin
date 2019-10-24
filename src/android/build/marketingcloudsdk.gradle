@@ -19,7 +19,3 @@ repositories {
 dependencies {
     implementation("com.salesforce.marketingcloud:marketingcloudsdk:6.3.+")
 }
-
-ext.cdvPluginPostBuildExtras += {
-    apply plugin: com.google.gms.googleservices.GoogleServicesPlugin
-}
