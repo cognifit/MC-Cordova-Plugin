@@ -97,7 +97,7 @@ Follow [these instructions](./ios_push.md) to enable push for iOS.
 The current state of the pushEnabled flag in the native Marketing Cloud
 SDK.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/messages/push/PushMessageManager.html#isPushEnabled())
@@ -150,7 +150,7 @@ Gets the notification settings for this app. Applies only to iOS/iPadOS.
 ### MCCordovaPlugin.enablePush([successCallback], [errorCallback])
 Enables push messaging in the native Marketing Cloud SDK.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/messages/push/PushMessageManager.html#enablePush())
@@ -167,7 +167,7 @@ Enables push messaging in the native Marketing Cloud SDK.
 ### MCCordovaPlugin.disablePush([successCallback], [errorCallback])
 Disables push messaging in the native Marketing Cloud SDK.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/messages/push/PushMessageManager.html#disablePush())
@@ -185,7 +185,7 @@ Disables push messaging in the native Marketing Cloud SDK.
 Returns the token used by the Marketing Cloud to send push messages to
 the device.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/messages/push/PushMessageManager.html#getPushToken())
@@ -203,7 +203,7 @@ the device.
 ### MCCordovaPlugin.getAttributes(successCallback, [errorCallback])
 Returns the maps of attributes set in the registration.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getAttributes())
@@ -221,7 +221,7 @@ Returns the maps of attributes set in the registration.
 ### MCCordovaPlugin.setAttribute(key, value, [successCallback], [errorCallback])
 Sets the value of an attribute in the registration.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.Editor.html#setAttribute(java.lang.String,%20java.lang.String))
@@ -241,7 +241,7 @@ Sets the value of an attribute in the registration.
 ### MCCordovaPlugin.clearAttribute(key, [successCallback], [errorCallback])
 Clears the value of an attribute in the registration.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.Editor.html#clearAttribute(java.lang.String))
@@ -258,7 +258,7 @@ Clears the value of an attribute in the registration.
 <a name="module_MCCordovaPlugin.addTag"></a>
 
 ### MCCordovaPlugin.addTag(tag, [successCallback], [errorCallback])
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.Editor.html#addTag(java.lang.String))
@@ -275,7 +275,7 @@ Clears the value of an attribute in the registration.
 <a name="module_MCCordovaPlugin.removeTag"></a>
 
 ### MCCordovaPlugin.removeTag(tag, [successCallback], [errorCallback])
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.Editor.html#removeTag(java.lang.String))
@@ -294,7 +294,7 @@ Clears the value of an attribute in the registration.
 ### MCCordovaPlugin.getTags(successCallback, [errorCallback])
 Returns the tags currently set on the device.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getTags())
@@ -312,7 +312,7 @@ Returns the tags currently set on the device.
 ### MCCordovaPlugin.setContactKey(contactKey, [successCallback], [errorCallback])
 Sets the contact key for the device's user.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.Editor.html#setContactKey(java.lang.String))
@@ -331,7 +331,7 @@ Sets the contact key for the device's user.
 ### MCCordovaPlugin.getContactKey(successCallback, [errorCallback])
 Returns the contact key currently set on the device.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getContactKey())
@@ -349,7 +349,7 @@ Returns the contact key currently set on the device.
 ### MCCordovaPlugin.enableVerboseLogging([successCallback], [errorCallback])
 Enables verbose logging within the native Marketing Cloud SDK.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/MarketingCloudSdk.html#setLogLevel(int))
@@ -366,7 +366,7 @@ Enables verbose logging within the native Marketing Cloud SDK.
 ### MCCordovaPlugin.disableVerboseLogging([successCallback], [errorCallback])
 Disables verbose logging within the native Marketing Cloud SDK.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **See**
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/MarketingCloudSdk.html#setLogLevel(int))
@@ -381,7 +381,7 @@ Disables verbose logging within the native Marketing Cloud SDK.
 <a name="module_MCCordovaPlugin.setOnNotificationOpenedListener"></a>
 
 ### MCCordovaPlugin.setOnNotificationOpenedListener(notificationOpenedListener)
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **Since**: 6.1.0  
 
 | Param | Type |
@@ -392,7 +392,7 @@ Disables verbose logging within the native Marketing Cloud SDK.
 <a name="module_MCCordovaPlugin.setOnUrlActionListener"></a>
 
 ### MCCordovaPlugin.setOnUrlActionListener(urlActionListener)
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **Since**: 6.3.0  
 
 | Param | Type |
@@ -407,7 +407,7 @@ Instructs the native SDK to log the SDK state to the native logging system (Logc
 Android and Xcode/Console.app for iOS).  This content can help diagnose most issues within
 the SDK and will be requested by the Marketing Cloud support team.
 
-**Kind**: static method of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: static method of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 **Since**: 6.3.1  
 
 | Param | Type |
@@ -418,7 +418,7 @@ the SDK and will be requested by the Marketing Cloud support team.
 <a name="module_MCCordovaPlugin..notificationOpenedCallback"></a>
 
 ### MCCordovaPlugin~notificationOpenedCallback : <code>function</code>
-**Kind**: inner typedef of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: inner typedef of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -432,7 +432,7 @@ the SDK and will be requested by the Marketing Cloud support team.
 <a name="module_MCCordovaPlugin..urlActionCallback"></a>
 
 ### MCCordovaPlugin~urlActionCallback : <code>function</code>
-**Kind**: inner typedef of <code>[MCCordovaPlugin](#module_MCCordovaPlugin)</code>  
+**Kind**: inner typedef of [<code>MCCordovaPlugin</code>](#module_MCCordovaPlugin)  
 
 | Param | Type | Description |
 | --- | --- | --- |
