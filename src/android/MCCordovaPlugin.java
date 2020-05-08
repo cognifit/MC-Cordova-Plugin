@@ -37,6 +37,7 @@ import com.salesforce.marketingcloud.UrlHandler;
 import com.salesforce.marketingcloud.notifications.NotificationManager;
 import com.salesforce.marketingcloud.notifications.NotificationMessage;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -105,6 +106,75 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
     public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleNotificationMessage(NotificationManager.extractMessage(intent));
+    }
+
+    public void handleNotificationData(Map dataInput, String requestId, Boolean appInBackground) {
+        /** We tried to "convert" the notification into something that MarketingCloud would automatically convert to a NotificationMessage object.
+         *  We failed, miserably. So we create it 'by hand'.
+         *  By looking at the code we've determined that the constructor expects:
+         *  id (String) the ID set by Marketing Cloud, found as the "_m" attribute
+         *  requestId (String) the ID set by Firebase, set to remoteMessage.getMessageId()
+         *  region (com.salesforce.marketingcloud.messages.Region?), a value we always see set to null
+         *  alert (String) found as the "alert" attribute
+         *  sound (com.salesforce.marketingcloud.notifications.NotificationMessage.Sound), a value we set to NotificationMessage.Sound.NONE
+         *  soundName (String), a value we always set to null
+         *  title (String) found as the "title" attribute
+         *  subtitle (String) found as the "subtitle" attribute
+         *  type (com.salesforce.marketingcloud.notifications.NotificationMessage.Type). If we see an "_od" attribute the type is OPEN_DIRECT
+         *  trigger (com.salesforce.marketingcloud.notifications.NotificationMessage.Trigger), hard-coded to NotificationMessage.Trigger.PUSH as we don't use geo-fences
+         *  url (String) found as the "_od" attribute
+         *  mediaUrl (String) in our tests we see this as null, for now we use that value
+         *  mediaAltText (String) in our tests we see this as null, for now we use that value
+         *  customKeys (Map<String, String>) attributes that are *not* used for any other argument
+         *  custom (String) in our tests we see this as null, for now we use that value
+         *  payload (Map<String, String>) the 'raw' data, set to the data object itself
+         *  notificationId (Int) we always see it set to 0
+         **/
+
+        Map<String, String> data =  (Map<String, String>) dataInput;
+        Map<String, String> mcData = new HashMap<String, String>();
+        Map<String, String> notificationCustomKeys = new HashMap<String, String>();
+
+        for (String key : data.keySet()) {
+            mcData.put(key, data.get(key));
+            if (!key.startsWith("_") && !key.startsWith("notification_") && key != "alert" && key != "title" && key != "subtitle") {
+                notificationCustomKeys.put(key, data.get(key));
+            }
+        }
+
+        if (mcData.containsKey("_m")) {
+            String notificationId = mcData.get("_m");
+            String notificationAlert = mcData.containsKey("alert") ? mcData.get("alert") : "";
+            String notificationTitle = mcData.containsKey("title") ? mcData.get("title") : "";
+            String notificationSubtitle = mcData.containsKey("subtitle") ? mcData.get("subtitle") : "";
+            com.salesforce.marketingcloud.notifications.NotificationMessage.Type notificationType = mcData.containsKey("_od") ? NotificationMessage.Type.OPEN_DIRECT : NotificationMessage.Type.OTHER;
+            String notificationUrl = mcData.containsKey("_od") ? mcData.get("_od") : "";
+
+            com.salesforce.marketingcloud.notifications.NotificationMessage message = new com.salesforce.marketingcloud.notifications.NotificationMessage(
+                    notificationId,
+                    requestId,
+                    null,
+                    notificationAlert,
+                    NotificationMessage.Sound.NONE,
+                    null,
+                    notificationTitle,
+                    notificationSubtitle,
+                    notificationType,
+                    NotificationMessage.Trigger.PUSH,
+                    notificationUrl,
+                    null,
+                    null,
+                    notificationCustomKeys,
+                    null,
+                    mcData,
+                    0);
+
+            handleNotificationMessage(message);
+
+			// Intent intent = new Intent(this, OnNotificationOpenReceiver.class);
+			// PendingIntent pendingIntent = PendingIntent.getActivity(this, new Random().nextInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
+			// com.salesforce.marketingcloud.notifications.NotificationManager.redirectIntentForAnalytics(this, pendingIntent, msg, true);
+        }
     }
 
     private void handleNotificationMessage(@Nullable NotificationMessage message) {
