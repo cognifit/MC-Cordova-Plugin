@@ -44,7 +44,10 @@ const int LOG_LENGTH = 800;
                 notification.userInfo
                     [@"SFMCFoundationUNNotificationReceivedNotificationKeyUNNotificationRequest"];
             if (userNotificationRequest != nil) {
+                // a "true" value will be attached to the notification request if the notification was received while the App was in the foreground
+                NSNumber *inForeground = objc_getAssociatedObject(userNotificationRequest, (__bridge void *) [MarketingCloudSDK sharedInstance]);
                 notificationData = [userNotificationRequest.content.userInfo mutableCopy];
+                notificationData[@"__inForeground__"] = [inForeground boolValue] == true ? @"true" : @"false";
             }
         }
         if (notificationData == nil) {
