@@ -26,6 +26,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 
 #import "MCCordovaPlugin.h"
+#import <objc/runtime.h>
 
 @implementation MCCordovaPlugin
 
@@ -44,7 +45,13 @@ const int LOG_LENGTH = 800;
                 notification.userInfo
                     [@"SFMCFoundationUNNotificationReceivedNotificationKeyUNNotificationRequest"];
             if (userNotificationRequest != nil) {
+                /** This flag will exist and be true if the notification was received while the App was in the foreground.
+                 We pass this to the Javascript code so it can decide whether to show the notification text again or simply issue a re-direction
+                 @see AppDelegate+FirebasePlugin.m, this value is set there */
+                NSNumber *wasReceivedInForeground = objc_getAssociatedObject(userNotificationRequest, (__bridge void *) [MarketingCloudSDK sharedInstance]);
+                
                 notificationData = [userNotificationRequest.content.userInfo mutableCopy];
+                notificationData[@"__$wasReceivedInForeground$__"] = ([wasReceivedInForeground boolValue] == true ? @"true" : @"false");
             }
         }
         if (notificationData == nil) {
