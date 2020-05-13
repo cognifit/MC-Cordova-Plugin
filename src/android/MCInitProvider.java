@@ -25,6 +25,8 @@
  */
 package com.salesforce.marketingcloud.cordova;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
