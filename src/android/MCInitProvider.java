@@ -49,6 +49,18 @@ public class MCInitProvider
                 builder.setUrlHandler(MCSdkListener.INSTANCE);
                 MarketingCloudSdk.init(ctx, builder.build(ctx), this);
             }
+            
+            /* create the channel for our notifications. We don't call 
+               com.salesforce.marketingcloud.notifications.NotificationManager.createDefaultNotificationChannel
+               because we want to set slightly different parameters. Most important is the name: CogniFit instead of "Marketing"
+            */
+            NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel marketingCloudChannel = new NotificationChannel("com.salesforce.marketingcloud.DEFAULT_CHANNEL", "CogniFit", android.app.NotificationManager.IMPORTANCE_HIGH);
+            marketingCloudChannel.enableLights(false);
+            marketingCloudChannel.enableVibration(false);
+            marketingCloudChannel.setShowBadge(true);
+            marketingCloudChannel.setLockscreenVisibility(1);
+            notificationManager.createNotificationChannel(marketingCloudChannel);
         }
         return false;
     }
