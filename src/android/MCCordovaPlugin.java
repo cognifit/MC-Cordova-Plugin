@@ -119,7 +119,7 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
         handleNotificationData(data, requestId, wasReceivedInForeground);
     }
 
-    public void handleNotificationData(Map dataInput, String requestId, Boolean appInBackground) {
+    public void handleNotificationData(Map dataInput, String requestId, Boolean wasReceivedInForeground) {
         /** We tried to "convert" the notification into something that MarketingCloud would automatically convert to a NotificationMessage object.
          *  We failed, miserably. So we create it 'by hand'.
          *  By looking at the code we've determined that the constructor expects:
