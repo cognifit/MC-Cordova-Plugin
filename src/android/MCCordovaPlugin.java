@@ -152,6 +152,7 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
                 notificationCustomKeys.put(key, data.get(key));
             }
         }
+        mcData.put("__$wasReceivedInForeground$__", wasReceivedInForeground ? "true" : "false");
 
         if (mcData.containsKey("_m")) {
             String notificationId = mcData.get("_m");
