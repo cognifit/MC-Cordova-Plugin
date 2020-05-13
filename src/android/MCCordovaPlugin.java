@@ -28,6 +28,7 @@ package com.salesforce.marketingcloud.cordova;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -106,6 +107,16 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
     public void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleNotificationMessage(NotificationManager.extractMessage(intent));
+    }
+    
+    public void handleNotificationData(Bundle bundle, String requestId, Boolean wasReceivedInForeground) {
+        Map<String, String> data = new HashMap<String, String>();
+
+        for (String key : bundle.keySet()) {
+            data.put(key, bundle.getString(key));
+        }
+
+        handleNotificationData(data, requestId, wasReceivedInForeground);
     }
 
     public void handleNotificationData(Map dataInput, String requestId, Boolean appInBackground) {
