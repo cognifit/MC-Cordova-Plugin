@@ -64,7 +64,7 @@ public class MCInitProvider
                 String channelName = "App";
                 try {
                     Bundle metaData = ctx.getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA).metaData;
-                    channelName = metaData.getString("com.cognifit.channel_name");
+                    channelName = metaData.getString("com.cognifit.channel_name", "App");
                 } catch (PackageManager.NameNotFoundException e) {
                     channelName = "App";
                 }
