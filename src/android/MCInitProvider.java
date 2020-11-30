@@ -30,6 +30,7 @@ import android.app.NotificationManager;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -60,7 +61,7 @@ public class MCInitProvider
             */
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             	String packageName = ctx.getPackageName();
-                String channelName;
+                String channelName = "App";
                 try {
                     Bundle metaData = ctx.getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA).metaData;
                     channelName = metaData.getString("com.cognifit.channel_name");
