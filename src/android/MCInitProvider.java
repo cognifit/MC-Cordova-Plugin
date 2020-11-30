@@ -58,8 +58,17 @@ public class MCInitProvider
                because we want to set slightly different parameters. Most important is the name: CogniFit instead of "Marketing"
             */
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            	String packageName = ctx.getPackageName();
+                String channelName;
+                try {
+                    Bundle metaData = ctx.getPackageManager().getApplicationInfo(packageName, PackageManager.GET_META_DATA).metaData;
+                    channelName = metaData.getString("com.cognifit.channel_name");
+                } catch (PackageManager.NameNotFoundException e) {
+                    channelName = "App";
+                }
+                
                 NotificationManager notificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-                NotificationChannel marketingCloudChannel = new NotificationChannel("com.salesforce.marketingcloud.DEFAULT_CHANNEL", "CogniFit", android.app.NotificationManager.IMPORTANCE_HIGH);
+                NotificationChannel marketingCloudChannel = new NotificationChannel("com.salesforce.marketingcloud.DEFAULT_CHANNEL", channelName, android.app.NotificationManager.IMPORTANCE_HIGH);
                 marketingCloudChannel.enableLights(false);
                 marketingCloudChannel.enableVibration(false);
                 marketingCloudChannel.setShowBadge(true);
