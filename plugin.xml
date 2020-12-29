@@ -3,9 +3,12 @@
   xmlns="http://apache.org/cordova/ns/plugins/1.0" 
   xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <name>MCCordovaPlugin</name>
+  <name>CogniFit's fork of cordova-plugin-marketingcloudsdk</name>
 
-  <description>A Cordova Plugin to access the native Salesforce Marketing Cloud MobilePush SDKs</description>
+  <description>
+  	A Cordova Plugin to access the native Salesforce Marketing Cloud MobilePush SDKs
+  	See original project at: https://github.com/salesforce-marketingcloud/MC-Cordova-Plugin	
+  </description>
 
   <repo>https://github.com/salesforce-marketingcloud/MC-Cordova-Plugin</repo>
 
