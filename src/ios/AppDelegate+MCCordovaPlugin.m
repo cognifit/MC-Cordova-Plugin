@@ -74,7 +74,18 @@
              withCompletionHandler:(void (^)(void))completionHandler {
     // tell the MarketingCloudSDK about the notification
     [[MarketingCloudSDK sharedInstance] sfmc_setNotificationRequest:response.notification.request];
-
+                 
+    // also tell the plugin for Local Notifications
+    // see here why this is method invocation is so 'convoluted'
+    // https://stackoverflow.com/questions/7017281/performselector-may-cause-a-leak-because-its-selector-is-unknown
+    Class localNotificationsPluginClass = NSClassFromString(@"LocalNotificationsPlugin");
+    SEL methodSelector = NSSelectorFromString(@"processNotificationResponse:");
+    if ([localNotificationsPluginClass respondsToSelector:methodSelector]) {
+        IMP imp = [localNotificationsPluginClass methodForSelector:methodSelector];
+        void (*nonLeakingFunction)(Class, SEL, UNNotificationResponse *) = (void *)imp;
+        nonLeakingFunction(localNotificationsPluginClass, methodSelector, response);
+    }
+    
     if (completionHandler != nil) {
         completionHandler();
     }
