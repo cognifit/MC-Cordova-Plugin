@@ -143,6 +143,20 @@ var MCCordovaPlugin = {
         argsCheck.checkArgs('fF', PLUGIN_NAME + '.getSystemToken', arguments);
         _exec(successCallback, errorCallback, 'getSystemToken');
     },
+    
+    /**
+     * Returns the unique device identifier that Salesforce will use to identify the device.
+     * @param  {function(token)} successCallback
+     * @param  {string} successCallback.deviceId - The device ID
+     *     messaging.
+     * @param  {function} [errorCallback]
+     * @see  {@link https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getDeviceId()|Android Docs}
+     * @see  {@link https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/sfmc_deviceIdentifier|iOS Docs}
+     */
+    getDeviceIdentifier: function(successCallback, errorCallback) {
+        argsCheck.checkArgs('fF', PLUGIN_NAME + '.getDeviceIdentifier', arguments);
+        _exec(successCallback, errorCallback, 'getDeviceIdentifier');
+    },
 
     /**
      * Returns the maps of attributes set in the registration.

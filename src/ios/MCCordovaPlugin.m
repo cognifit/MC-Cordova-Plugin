@@ -321,6 +321,14 @@ const int LOG_LENGTH = 800;
                                 callbackId:command.callbackId];
 }
 
+- (void)getDeviceIdentifier:(CDVInvokedUrlCommand *)command {
+    NSString *deviceIdentifier = [[MarketingCloudSDK sharedInstance] sfmc_deviceIdentifier];
+
+    [self.commandDelegate sendPluginResult:[CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                             messageAsString:deviceIdentifier]
+                                callbackId:command.callbackId];
+}
+
 - (void)isPushEnabled:(CDVInvokedUrlCommand *)command {
     BOOL enabled = [[MarketingCloudSDK sharedInstance] sfmc_pushEnabled];
 
