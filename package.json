@@ -1,6 +1,6 @@
 {
   "name": "@cognifit/cordova-plugin-marketingcloudsdk",
-  "version": "7.3.0",
+  "version": "7.4.0",
   "description": "CogniFit's fork of cordova-plugin-marketingcloudsdk\nA Cordova Plugin to access the native Salesforce Marketing Cloud MobilePush SDKs",
   "author": "Salesforce Marketing Cloud",
   "license": "BSD-3-Clause",
@@ -37,7 +37,6 @@
     "eslint": "^4.3.0",
     "eslint-config-semistandard": "^11.0.0",
     "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-es5": "^1.3.1",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
