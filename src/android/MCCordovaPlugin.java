@@ -109,18 +109,8 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
         handleNotificationMessage(NotificationManager.extractMessage(intent));
     }
     
-    public void handleNotificationData(Bundle bundle, String requestId, Boolean wasReceivedInForeground) {
-        Map<String, String> data = new HashMap<String, String>();
-
-        for (String key : bundle.keySet()) {
-            data.put(key, bundle.getString(key));
-        }
-
-        handleNotificationData(data, requestId, wasReceivedInForeground);
-    }
-
-    public void handleNotificationData(Map dataInput, String requestId, Boolean wasReceivedInForeground) {
-        /** We tried to "convert" the notification into something that MarketingCloud would automatically convert to a NotificationMessage object.
+    public NotificationMessage messageFromNotification(Map dataInput, String requestId, Boolean wasReceivedInForeground) {
+    	/** We tried to "convert" the notification into something that MarketingCloud would automatically convert to a NotificationMessage object.
          *  We failed, miserably. So we create it 'by hand'.
          *  By looking at the code we've determined that the constructor expects:
          *  id (String) the ID set by Marketing Cloud, found as the "_m" attribute
@@ -180,8 +170,30 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
                     null,
                     mcData,
                     0);
+            
+            return message;
+        } else {
+        	return null;
+        }
+    }
+    
+    public void handleNotificationData(Bundle bundle, String requestId, Boolean wasReceivedInForeground) {
+        Map<String, String> data = new HashMap<String, String>();
 
-            handleNotificationMessage(message);
+        for (String key : bundle.keySet()) {
+            if (bundle.getString(key) != null) {
+                data.put(key, bundle.getString(key));
+            }
+        }
+
+        handleNotificationData(data, requestId, wasReceivedInForeground);
+    }
+
+    public void handleNotificationData(Map dataInput, String requestId, Boolean wasReceivedInForeground) {
+    	NotificationMessage message =  this.messageFromNotification(dataInput, requestId, wasReceivedInForeground);
+
+        if (message != null) {
+        	handleNotificationMessage(message);
 
 			// Intent intent = new Intent(this, OnNotificationOpenReceiver.class);
 			// PendingIntent pendingIntent = PendingIntent.getActivity(this, new Random().nextInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
