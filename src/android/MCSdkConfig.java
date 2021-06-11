@@ -97,6 +97,12 @@ public class MCSdkConfig {
                                     NotificationCustomizationOptions.create(notifId));
                             }
                             break;
+                        case CONFIG_PREFIX + "mid":
+                            builder.setMid(val);
+                            break;
+                        case CONFIG_PREFIX + "sender_id":
+                            builder.setSenderId(val);
+                            break;
                         case CONFIG_PREFIX + "tenant_specific_endpoint":
                             builder.setMarketingCloudServerUrl(val);
                             break;
