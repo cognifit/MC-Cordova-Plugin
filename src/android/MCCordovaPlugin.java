@@ -32,6 +32,8 @@ import android.os.Bundle;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.firebase.messaging.RemoteMessage;
 import com.salesforce.marketingcloud.MCLogListener;
 import com.salesforce.marketingcloud.MarketingCloudSdk;
 import com.salesforce.marketingcloud.UrlHandler;
@@ -181,7 +183,8 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
         Map<String, String> data = new HashMap<String, String>();
 
         for (String key : bundle.keySet()) {
-            if (bundle.getString(key) != null) {
+            // for some tests we add non-string attributes to the Bundle, these must be ignored
+            if (!key.equalsIgnoreCase("com.salesforce.marketingcloud.notifications.EXTRA_MESSAGE") && !key.equalsIgnoreCase("com.salesforce.marketingcloud.notifications.EXTRA_AUTO_CANCEL")) {
                 data.put(key, bundle.getString(key));
             }
         }
@@ -199,6 +202,10 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
 			// PendingIntent pendingIntent = PendingIntent.getActivity(this, new Random().nextInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
 			// com.salesforce.marketingcloud.notifications.NotificationManager.redirectIntentForAnalytics(this, pendingIntent, msg, true);
         }
+    }
+
+    public void handlePushNotification(RemoteMessage remoteMessage) {
+        MarketingCloudSdk.getInstance().getPushMessageManager().handleMessage(remoteMessage);
     }
 
     private void handleNotificationMessage(@Nullable NotificationMessage message) {

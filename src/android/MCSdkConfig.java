@@ -87,7 +87,10 @@ public class MCSdkConfig {
                             senderIdSet = true;
                             break;
                         case CONFIG_PREFIX + "analytics":
+                            // through 'trial and error' we determined that Pi Analytics MUST also be enabled
+                            // for the open analytics to work
                             builder.setAnalyticsEnabled("true".equalsIgnoreCase(val));
+                            builder.setPiAnalyticsEnabled("true".equalsIgnoreCase(val));
                             break;
                         case CONFIG_PREFIX + "notification_small_icon":
                             int notifId = context.getResources().getIdentifier(
