@@ -197,10 +197,6 @@ public class MCCordovaPlugin extends CordovaPlugin implements UrlHandler {
 
         if (message != null) {
         	handleNotificationMessage(message);
-
-			// Intent intent = new Intent(this, OnNotificationOpenReceiver.class);
-			// PendingIntent pendingIntent = PendingIntent.getActivity(this, new Random().nextInt(), intent, PendingIntent.FLAG_UPDATE_CURRENT);
-			// com.salesforce.marketingcloud.notifications.NotificationManager.redirectIntentForAnalytics(this, pendingIntent, msg, true);
         }
     }
 
